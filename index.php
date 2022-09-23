@@ -2,7 +2,7 @@
     <body>
     Image:
         <img src="<?php
-        require_once 'src/Cat.php';
-        echo getCatImageURL() ?>" alt=""/>
+        require_once 'src/catIndex.php';
+        echo getImageURL() ?>" alt=""/>
     </body>
 </html>

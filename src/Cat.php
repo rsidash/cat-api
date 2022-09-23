@@ -50,7 +50,7 @@ class Cat
     /**
      * @throws GuzzleException
      */
-    public function getCatImageURL()
+    public function getCatImageURL(): string
     {
         return json_decode($this->getCat())[0]->url;
     }

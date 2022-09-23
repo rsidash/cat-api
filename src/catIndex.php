@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 use App\Cat;
 use GuzzleHttp\Exception\GuzzleException;
 
-function getCatImageURL(): string
+function getImageURL(): string
 {
     $cat = new Cat();
 
