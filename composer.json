@@ -1,0 +1,20 @@
+{
+    "name": "rsidash/kolesa-upgrade-homework-3",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": [
+            "src/client.php",
+            "src/connection.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Sidash Roman"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
