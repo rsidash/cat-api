@@ -3,6 +3,7 @@
     Image:
         <img src="<?php
         require_once 'src/catIndex.php';
-        echo getImageURL() ?>" alt=""/>
+        $url = getImageURL();
+        echo $url ?>" alt=""/>
     </body>
 </html>

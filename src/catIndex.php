@@ -12,7 +12,6 @@ function getImageURL(): string
     try {
         return $cat->getCatImageURL();
     } catch (Exception|GuzzleException $e) {
-        echo $e;
-        return "";
+        return $e->getMessage();
     }
 }
