@@ -4,6 +4,7 @@ require 'vendor/autoload.php';
 
 use App\RandomCategoryCat;
 use App\RandomCat;
+use Template\HTMLTemplate;
 
 try {
     if (isset($_GET['categoryId'])) {
@@ -24,7 +25,8 @@ try {
         );
     }
 
-    echo formatHTMLTemplate($cat, $text);
+    $htmlTemplate = new HTMLTemplate();
+    echo $htmlTemplate->getHTMLTemplate($cat, $text);
 
 } catch (Exception $e) {
     echo $e->getMessage();

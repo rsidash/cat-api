@@ -2,12 +2,13 @@
     "name": "rsidash/kolesa-upgrade-homework-3",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Template\\": "src/public/templates/html/",
+            "TemplateTag\\": "src/public/templates/html/components/"
         },
         "files": [
             "src/services/client.php",
-            "src/services/connection.php",
-            "src/services/getHTMLTemplate.php"
+            "src/services/connection.php"
         ]
     },
     "authors": [

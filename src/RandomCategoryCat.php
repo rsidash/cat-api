@@ -36,12 +36,20 @@ class RandomCategoryCat extends RandomCat
                 return 'hats';
             case 2:
                 return 'space';
+            case 3:
+                return 'funny';
             case 4:
                 return 'sunglasses';
             case 5:
                 return 'boxes';
+            case 6:
+                return 'caturday';
             case 7:
                 return 'ties';
+            case 9:
+                return 'dream';
+            case 10:
+                return 'kittens';
             case 14:
                 return 'sinks';
             case 15:
