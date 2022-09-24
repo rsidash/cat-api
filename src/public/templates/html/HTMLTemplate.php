@@ -22,7 +22,8 @@ class HTMLTemplate
     {
         $image = new HTMLTemplateImage();
 
-        $header = $this->header->getHeaderTag($text['header'], 3) . ":";
+        $headerText = $text['header'] . ":";
+        $header = $this->header->getHeaderTag($headerText, 3);
 
         $content = $header . $image->getImageTag($object, $text['alt']);
 
