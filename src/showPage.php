@@ -19,7 +19,7 @@ switch($_GET['entity']) {
         showDog();
         break;
     default:
-        echo 'Invalid entity';
+        echo 'Invalid entity. Please choose cats or dogs';
 }
 
 function showCat() {
@@ -52,5 +52,8 @@ function showCat() {
 
 function showDog() {
     // TODO: implement show dogs function
-    echo 'WORK IN PROGRESS';
+    $text = 'WORK IN PROGRESS';
+
+    $htmlTemplate = new HTMLTemplate();
+    echo $htmlTemplate->getBasicHeaderHTMLTemplate($text);
 }
