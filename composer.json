@@ -6,7 +6,8 @@
         },
         "files": [
             "src/client.php",
-            "src/connection.php"
+            "src/connection.php",
+            "src/getHTMLTemplate.php"
         ]
     },
     "authors": [

@@ -5,7 +5,7 @@ namespace App;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 
-class Cat
+class Cat implements ImageInterface
 {
     /**
      * @throws GuzzleException
@@ -49,9 +49,14 @@ class Cat
 
     /**
      * @throws GuzzleException
+     * @throws Exception
      */
-    public function getCatImageURL(): string
+    public function getImageURL(): string
     {
+        if ($this->getCat() === '[]') {
+            throw new Exception('Category not exist');
+        }
+
         return json_decode($this->getCat())[0]->url;
     }
 }
