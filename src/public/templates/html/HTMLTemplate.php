@@ -10,24 +10,29 @@ use TemplateTag\HTMLTemplateImage;
 
 class HTMLTemplate
 {
+    protected HTMLTemplateContainer $container;
+
+    public function __construct()
+    {
+        $this->container = new HTMLTemplateContainer();
+    }
+
     public function getHTMLTemplate(ImageInterface $object, array $text): string
     {
-        $container = new HTMLTemplateContainer();
         $header = new HTMLTemplateHeader();
         $image = new HTMLTemplateImage();
 
         $content = $header->getHeaderTag($text['header']) . $image->getImageTag($object, $text['alt']);
 
-        return $container->getContainer($content);
+        return $this->container->getContainer($content);
     }
 
     public function getBasicHeaderHTMLTemplate(string $text): string
     {
-        $container = new HTMLTemplateContainer();
         $header = new HTMLTemplateBasicHeader();
 
         $content = $header->getHeaderTag($text);
 
-        return $container->getContainer($content);
+        return $this->container->getContainer($content);
     }
 }
