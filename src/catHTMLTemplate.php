@@ -15,7 +15,7 @@ function formatHTMLTemplate(): string
             "<b>Cat image:</b>
             <br>
             <img src=\"{$imageURL}\" alt=\"\"/>";
-    } catch (GuzzleException $e) {
+    } catch (Exception $e) {
         return $e->getMessage();
     }
 }
