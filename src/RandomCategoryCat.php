@@ -24,7 +24,7 @@ class RandomCategoryCat extends RandomCat
      */
     public function getCat(): string
     {
-        $uri = '/v1/images/search?category_ids=' . $this->categoryId;
+        $uri = $this->uri . '?category_ids=' . $this->categoryId;
 
         return getContents($uri);
     }

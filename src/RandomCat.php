@@ -6,13 +6,13 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class RandomCat extends Cat
 {
+    protected string $uri = '/v1/images/search';
+
     /**
      * @throws GuzzleException
      */
     public function getCat(): string
     {
-        $uri = '/v1/images/search';
-
-        return getContents($uri);
+        return getContents($this->uri);
     }
 }
