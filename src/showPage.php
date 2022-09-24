@@ -51,7 +51,7 @@ function showCat() {
 }
 
 function showDog() {
-    // TODO: implement show dogs function
+    // TODO: implement DOGS class
     $text = 'WORK IN PROGRESS';
 
     $htmlTemplate = new HTMLTemplate();
