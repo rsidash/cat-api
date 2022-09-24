@@ -47,7 +47,7 @@ class RandomCategoryCat extends RandomCat
             case 15:
                 return 'clothes';
             default:
-                throw new Exception("Invalid parameter \"categoryId\"=$this->categoryId");
+                throw new Exception("Invalid category: \"categoryId\"=$this->categoryId not exists");
         }
     }
 }
