@@ -3,58 +3,18 @@
 namespace App;
 
 use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 
-class Cat implements ImageInterface
+abstract class Cat implements ImageInterface
 {
-    /**
-     * @throws GuzzleException
-     * @throws Exception
-     */
-    public function getCat(): string
-    {
-        if (isset($_GET['categoryId'])) {
-            $categoryId = $_GET['categoryId'];
-
-            if (!is_numeric($categoryId)) {
-                throw new Exception('Category not a numeric');
-            }
-
-            return $this->getCatByCategory($categoryId);
-        }
-
-        return $this->getRandomCat();
-    }
+    public abstract function getCat(): string;
 
     /**
-     * @throws GuzzleException
-     * @throws Exception
-     */
-    public function getCatByCategory(int $categoryId): string
-    {
-        $uri = '/v1/images/search?category_ids=' . $categoryId;
-
-        return getContents($uri);
-    }
-
-    /**
-     * @throws GuzzleException
-     */
-    public function getRandomCat(): string
-    {
-        $uri = '/v1/images/search';
-
-        return getContents($uri);
-    }
-
-    /**
-     * @throws GuzzleException
      * @throws Exception
      */
     public function getImageURL(): string
     {
-        if ($this->getCat() === '[]') {
-            throw new Exception('Category not exist');
+        if ($this->getCat() === '[]' || is_null($this->getCat())) {
+            throw new Exception('Cat image not exists');
         }
 
         return json_decode($this->getCat())[0]->url;

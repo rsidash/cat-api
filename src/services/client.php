@@ -8,18 +8,12 @@ use GuzzleHttp\Exception\GuzzleException;
 /**
  * @throws GuzzleException
  */
-function getClient(): Client
+function getContents(string $uri): string
 {
-    return new Client([
+    $client = new Client([
         'base_uri' => BASE_URI,
         'timeout' => REQUEST_TIMEOUT,
     ]);
-}
 
-/**
- * @throws GuzzleException
- */
-function getContents(string $uri): string
-{
-    return getClient()->request('GET', $uri)->getBody()->getContents();
+    return $client->request('GET', $uri)->getBody()->getContents();
 }

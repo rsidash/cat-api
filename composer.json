@@ -5,9 +5,9 @@
             "App\\": "src/"
         },
         "files": [
-            "src/client.php",
-            "src/connection.php",
-            "src/getHTMLTemplate.php"
+            "src/services/client.php",
+            "src/services/connection.php",
+            "src/services/getHTMLTemplate.php"
         ]
     },
     "authors": [
@@ -16,6 +16,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.5"
+        "guzzlehttp/guzzle": "^7.5",
+        "ext-json": "*"
     }
 }
