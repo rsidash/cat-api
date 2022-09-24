@@ -2,10 +2,10 @@
 
 namespace TemplateTag;
 
-class HTMLTemplateHeader extends HTMLTemplateBasicHeader
+class HTMLTemplateHeader
 {
-    public function getHeaderTag(string $header): string
+    public function getHeaderTag(string $header, int $headerType): string
     {
-        return "<h2>{$header}:</h2>";
+        return "<h{$headerType}>{$header}</{$headerType}>";
     }
 }
