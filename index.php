@@ -1,9 +1,8 @@
 <html lang="en">
     <body>
-    Image:
-        <img src="<?php
-        require_once 'src/catIndex.php';
-        $url = getImageURL();
-        echo $url ?>" alt=""/>
+        <?php
+            require_once 'src/catHTMLTemplate.php';
+            echo formatHTMLTemplate();
+        ?>
     </body>
 </html>
