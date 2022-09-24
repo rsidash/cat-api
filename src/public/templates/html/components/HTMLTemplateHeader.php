@@ -6,6 +6,6 @@ class HTMLTemplateHeader
 {
     public function getHeaderTag(string $header, int $headerType): string
     {
-        return "<h{$headerType}>{$header}</{$headerType}>";
+        return "<h{$headerType}>{$header}</h{$headerType}>";
     }
 }
