@@ -5,8 +5,9 @@ require 'vendor/autoload.php';
 use App\RandomCategoryCat;
 use App\RandomCat;
 
-if (isset($_GET['categoryId'])) {
-    try {
+try {
+    if (isset($_GET['categoryId'])) {
+
         $cat = new RandomCategoryCat();
         $category = $cat->getCategory();
 
@@ -14,17 +15,18 @@ if (isset($_GET['categoryId'])) {
             'header' => "Random cat from {$category} category",
             'alt' => "this is a random cat image from {$category} category"
         );
-    } catch (Exception $e) {
-        echo $e->getMessage();
-        die;
+    } else {
+        $cat = new RandomCat();
+
+        $text = array(
+            'header' => 'Random cat image',
+            'alt' => 'this is a random cat image'
+        );
     }
-} else {
-    $cat = new RandomCat();
 
-    $text = array(
-        'header' => 'Random cat image',
-        'alt' => 'this is a random cat image'
-    );
+    echo formatHTMLTemplate($cat, $text);
+
+} catch (Exception $e) {
+    echo $e->getMessage();
+    die;
 }
-
-echo formatHTMLTemplate($cat, $text);
