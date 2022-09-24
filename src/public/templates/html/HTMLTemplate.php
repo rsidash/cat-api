@@ -22,7 +22,9 @@ class HTMLTemplate
     {
         $image = new HTMLTemplateImage();
 
-        $content = $this->header->getHeaderTag($text['header'], 3) . $image->getImageTag($object, $text['alt']);
+        $header = $this->header->getHeaderTag($text['header'], 3) . ":";
+
+        $content = $header . $image->getImageTag($object, $text['alt']);
 
         return $this->container->getContainer($content);
     }
