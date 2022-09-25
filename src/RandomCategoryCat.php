@@ -21,10 +21,6 @@ class RandomCategoryCat extends RandomCat
         $this->categoryId = $categoryId;
 
         $this->categories = json_decode($this->getCategories());
-
-        if (!in_array($this->categoryId, $this->getCategoriesIds())) {
-            throw new Exception("Invalid category: \"categoryId\"=$this->categoryId not exists");
-        }
     }
 
     /**
@@ -49,26 +45,21 @@ class RandomCategoryCat extends RandomCat
         }
     }
 
-    public function getCategoriesIds(): array
-    {
-        $categoriesIds = array();
-
-        foreach ($this->categories as $category) {
-            if ($category->id === $this->categoryId) {
-                array_push($categoriesIds, $category->id);
-            }
-        }
-
-        return $categoriesIds;
-    }
-
     public function getCategory()
     {
+        $categoryName = "";
+
         foreach ($this->categories as $category) {
             switch ($this->categoryId) {
                 case $category->id:
-                    return $category->name;
+                    $categoryName = $category->name;
             }
         }
+
+        if ($categoryName === "") {
+            throw new Exception("Invalid category: \"categoryId\"=$this->categoryId not exists");
+        }
+
+        return $categoryName;
     }
 }
