@@ -6,10 +6,8 @@ use App\ImageInterface;
 
 class HTMLTemplateImage
 {
-    public function getImageTag(ImageInterface $object, string $alt): string
+    public function getImageTag(string $url, string $alt): string
     {
-        $imageURL = $object->getImageURL();
-
-        return "<img src=\"{$imageURL}\" alt=\"{$alt}\">";
+        return "<img src=\"{$url}\" alt=\"{$alt}\">";
     }
 }

@@ -51,7 +51,8 @@ class ContentGenerator
                 );
             }
 
-            echo $this->htmlTemplate->getImageHTMLTemplate($cat, $text);
+            $url = $cat->getImageURL();
+            echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
 
         } catch (Exception $e) {
             $this->showError($e->getMessage());
@@ -68,9 +69,10 @@ class ContentGenerator
         );
 
         $dog = new Dog();
+        $url = $dog->getImageURL();
 
         echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($header);
-        echo $this->htmlTemplate->getImageHTMLTemplate($dog, $text);
+        echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
     }
 
     public function showError(string $message): void

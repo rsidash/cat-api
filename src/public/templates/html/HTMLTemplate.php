@@ -18,7 +18,7 @@ class HTMLTemplate
         $this->header = new HTMLTemplateHeader();
     }
 
-    public function getImageHTMLTemplate(ImageInterface $object, array $text): string
+    public function getImageHTMLTemplate(string $url, array $text): string
     {
         $image = new HTMLTemplateImage();
 
@@ -30,7 +30,7 @@ class HTMLTemplate
 
         $header = $this->header->getHeaderTag($headerText, 3);
 
-        $content = $header . $image->getImageTag($object, $text['alt']);
+        $content = $header . $image->getImageTag($url, $text['alt']);
 
         return $this->container->getContainer($content);
     }
