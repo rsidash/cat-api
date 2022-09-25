@@ -22,7 +22,12 @@ class HTMLTemplate
     {
         $image = new HTMLTemplateImage();
 
-        $headerText = $text['header'] . ":";
+        if ($text['header'] === "") {
+            $headerText = "";
+        } else {
+            $headerText = $text['header'] . ":";
+        }
+
         $header = $this->header->getHeaderTag($headerText, 3);
 
         $content = $header . $image->getImageTag($object, $text['alt']);

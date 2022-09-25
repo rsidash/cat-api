@@ -61,13 +61,15 @@ class ContentGenerator
     public function showDog(): void
     {
         // TODO: Implement work with Dogs
+        $header = 'WORK STILL IN PROGRESS';
         $text = array(
-            'header' => 'WORK IN PROGRESS',
+            'header' => '',
             'alt' => 'this is a dog image'
         );
 
         $dog = new Dog();
 
+        echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($header);
         echo $this->htmlTemplate->getImageHTMLTemplate($dog, $text);
     }
 
