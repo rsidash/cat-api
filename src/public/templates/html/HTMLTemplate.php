@@ -18,7 +18,7 @@ class HTMLTemplate
         $this->header = new HTMLTemplateHeader();
     }
 
-    public function getHTMLTemplate(ImageInterface $object, array $text): string
+    public function getImageHTMLTemplate(ImageInterface $object, array $text): string
     {
         $image = new HTMLTemplateImage();
 
@@ -32,7 +32,14 @@ class HTMLTemplate
 
     public function getBasicHeaderHTMLTemplate(string $text): string
     {
-        $content = $this->header->getHeaderTag($text, 1);
+        $content = $this->header->getHeaderTag($text);
+
+        return $this->container->getContainer($content);
+    }
+
+    public function getErrorTemplate(string $message): string
+    {
+        $content = $this->header->getHeaderTag($message);
 
         return $this->container->getContainer($content);
     }

@@ -3,13 +3,11 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
+            "GuzzleClient\\": "src/services/",
             "Template\\": "src/public/templates/html/",
             "TemplateTag\\": "src/public/templates/html/components/"
         },
-        "files": [
-            "src/services/client.php",
-            "src/services/connection.php"
-        ]
+        "files": []
     },
     "authors": [
         {

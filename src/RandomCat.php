@@ -13,6 +13,6 @@ class RandomCat extends Cat
      */
     public function getCat(): string
     {
-        return getContents($this->uri);
+        return $this->guzzleClient->getContents($this->uri);
     }
 }
