@@ -35,13 +35,7 @@ class ContentGenerator
         try {
             if (isset($_GET['categoryId'])) {
 
-                $categoryId = $_GET['categoryId'];
-
-                if (!is_numeric($categoryId)) {
-                    throw new Exception("Parameter \"categoryId\"={$categoryId} is not a numeric");
-                }
-
-                $cat = new RandomCat($categoryId);
+                $cat = new RandomCategoryCat($_GET['categoryId']);
                 $category = $cat->getCategory();
 
                 $text = array(
