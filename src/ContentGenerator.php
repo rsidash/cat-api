@@ -74,7 +74,11 @@ class ContentGenerator
         );
 
         $dog = new Dog();
-        $url = $dog->getImageURL();
+        try {
+            $url = $dog->getImageURL();
+        } catch (Exception $e) {
+            $this->showError($e->getMessage());
+        }
 
         echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($header);
         echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
