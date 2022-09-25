@@ -2,8 +2,6 @@
 
 namespace TemplateTag;
 
-use App\ImageInterface;
-
 class HTMLTemplateImage
 {
     public function getImageTag(string $url, string $alt): string

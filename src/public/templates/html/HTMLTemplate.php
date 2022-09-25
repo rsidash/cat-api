@@ -2,7 +2,6 @@
 
 namespace Template;
 
-use App\ImageInterface;
 use TemplateTag\HTMLTemplateContainer;
 use TemplateTag\HTMLTemplateHeader;
 use TemplateTag\HTMLTemplateImage;
