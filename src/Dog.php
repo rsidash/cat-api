@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App;
 
-
-class Dog implements ImageInterface
+class Dog extends Animal
 {
     public function getDog()
     {
@@ -15,6 +13,12 @@ class Dog implements ImageInterface
     public function getImageURL(): string
     {
         // TODO: Implement getImageURL() method.
+        return $this->getAnimal();
+    }
+
+    public function getAnimal(): string
+    {
+        // TODO: Implement getAnimal() method.
         return $this->getDog();
     }
 }

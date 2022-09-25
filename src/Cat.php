@@ -5,11 +5,11 @@ namespace App;
 use Exception;
 use GuzzleClient\GuzzleClient;
 
-abstract class Cat implements ImageInterface
+abstract class Cat extends Animal
 {
     protected GuzzleClient $guzzleClient;
 
-    public abstract function getCat(): string;
+    public abstract function getAnimal(): string;
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ abstract class Cat implements ImageInterface
      */
     public function getImageURL(): string
     {
-        $contents = $this->getCat();
+        $contents = $this->getAnimal();
 
         if ($contents === '[]' || is_null($contents)) {
             throw new Exception('Cat image not exists');
