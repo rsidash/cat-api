@@ -60,10 +60,15 @@ class ContentGenerator
 
     public function showDog(): void
     {
-        // TODO: implement DOGS class
-        $text = 'WORK IN PROGRESS';
+        // TODO: Implement work with Dogs
+        $text = array(
+            'header' => 'WORK IN PROGRESS',
+            'alt' => 'this is a dog image'
+        );
 
-        echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($text);
+        $dog = new Dog();
+
+        echo $this->htmlTemplate->getImageHTMLTemplate($dog, $text);
     }
 
     public function showError(string $message): void

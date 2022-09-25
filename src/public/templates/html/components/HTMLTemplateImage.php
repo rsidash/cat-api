@@ -10,6 +10,6 @@ class HTMLTemplateImage
     {
         $imageURL = $object->getImageURL();
 
-        return "<img src={$imageURL} alt=\"{$alt}\">";
+        return "<img src=\"{$imageURL}\" alt=\"{$alt}\">";
     }
 }
