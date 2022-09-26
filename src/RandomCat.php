@@ -11,6 +11,9 @@ class RandomCat extends Cat
     protected int $categoryId;
     private array $categories;
 
+    /**
+     * @throws GuzzleException
+     */
     public function __construct(int $categoryId = 0)
     {
         parent::__construct();
@@ -50,25 +53,26 @@ class RandomCat extends Cat
         return $this->guzzleClient->getContents($uri);
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function getCategories(): string
     {
         $uri = '/v1/categories';
 
-        try {
-            return $this->guzzleClient->getContents($uri);
-        } catch (GuzzleException $e) {
-            return $e->getMessage();
-        }
+        return $this->guzzleClient->getContents($uri);
     }
 
-    public function getCategory()
+    /**
+     * @throws Exception
+     */
+    public function getCategory(): string
     {
         $categoryName = "";
 
         foreach ($this->categories as $category) {
-            switch ($this->categoryId) {
-                case $category->id:
-                    $categoryName = $category->name;
+            if ($this->categoryId == $category->id) {
+                $categoryName = $category->name;
             }
         }
 

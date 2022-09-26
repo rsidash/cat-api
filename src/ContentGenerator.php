@@ -3,6 +3,7 @@
 namespace App;
 
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Template\HTMLTemplate;
 
 class ContentGenerator
@@ -59,7 +60,7 @@ class ContentGenerator
             $url = $cat->getImageURL();
             echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
 
-        } catch (Exception $e) {
+        } catch (Exception|GuzzleException $e) {
             $this->showError($e->getMessage());
         }
     }
@@ -76,12 +77,12 @@ class ContentGenerator
         $dog = new Dog();
         try {
             $url = $dog->getImageURL();
+
+            echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($header);
+            echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
         } catch (Exception $e) {
             $this->showError($e->getMessage());
         }
-
-        echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($header);
-        echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
     }
 
     public function showError(string $message): void
