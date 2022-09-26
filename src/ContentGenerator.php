@@ -70,8 +70,10 @@ class ContentGenerator
             $url = $cat->getImageURL();
             echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
 
-        } catch (Exception|GuzzleException $e) {
+        } catch (GuzzleException $e) {
             $this->showInternalServerError($e->getMessage());
+        } catch (Exception $e) {
+            $this->showBadRequestError($e->getMessage());
         }
     }
 

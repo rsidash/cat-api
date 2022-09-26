@@ -15,7 +15,7 @@ abstract class Animal
     {
         $contents = $this->getAnimal();
 
-        if ($contents === '[]') {
+        if ($contents === '[]' || is_null(json_decode($contents))) {
             throw new Exception("Image not exists");
         }
 
