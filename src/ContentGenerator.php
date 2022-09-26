@@ -20,24 +20,11 @@ class ContentGenerator
         $this->htmlTemplate = new HTMLTemplate();
 
         if (!isset($_GET['entity'])) {
-            $this->showError('Entity is not set');
+            $this->showBadRequestError('Entity is not set');
             die;
         }
 
         $this->entityKey = $_GET['entity'];
-    }
-
-    /**
-     * @throws Exception
-     */
-    protected function checkEntitySet(): bool
-    {
-        if (!isset($_GET['entity'])) {
-            $this->showError('Entity is not set');
-            die;
-        }
-
-        return true;
     }
 
     public function generateContent(): void
@@ -50,7 +37,7 @@ class ContentGenerator
                 $this->showDog();
                 break;
             default:
-                $this->showError('Invalid entity. Please choose cats or dogs');
+                $this->showBadRequestError('Invalid entity. Please choose cats or dogs');
         }
     }
 
@@ -84,7 +71,7 @@ class ContentGenerator
             echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
 
         } catch (Exception|GuzzleException $e) {
-            $this->showError($e->getMessage());
+            $this->showInternalServerError($e->getMessage());
         }
     }
 
@@ -104,12 +91,19 @@ class ContentGenerator
             echo $this->htmlTemplate->getBasicHeaderHTMLTemplate($header);
             echo $this->htmlTemplate->getImageHTMLTemplate($url, $text);
         } catch (Exception $e) {
-            $this->showError($e->getMessage());
+            $this->showInternalServerError($e->getMessage());
         }
     }
 
-    protected function showError(string $message): void
+    protected function showBadRequestError(string $message): void
     {
+        http_response_code(400);
+        echo $this->htmlTemplate->getErrorTemplate($message);
+    }
+
+    protected function showInternalServerError(string $message): void
+    {
+        http_response_code(500);
         echo $this->htmlTemplate->getErrorTemplate($message);
     }
 }
