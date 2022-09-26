@@ -8,11 +8,14 @@ abstract class Animal
 {
     public abstract function getAnimal(): string;
 
+    /**
+     * @throws Exception
+     */
     public function getImageURL(): string
     {
         $contents = $this->getAnimal();
 
-        if ($contents === '[]' || is_null($contents)) {
+        if ($contents === '[]') {
             throw new Exception("Image not exists");
         }
 

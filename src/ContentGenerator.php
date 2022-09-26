@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Cat\RandomCat;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Template\HTMLTemplate;
@@ -11,15 +12,37 @@ class ContentGenerator
     private string $entityKey;
     private HTMLTemplate $htmlTemplate;
 
-    public function __construct(string $entityKey)
+    /**
+     * @throws Exception
+     */
+    public function __construct()
     {
-        $this->entityKey = $entityKey;
         $this->htmlTemplate = new HTMLTemplate();
+
+        if (!isset($_GET['entity'])) {
+            $this->showError('Entity is not set');
+            die;
+        }
+
+        $this->entityKey = $_GET['entity'];
+    }
+
+    /**
+     * @throws Exception
+     */
+    protected function checkEntitySet(): bool
+    {
+        if (!isset($_GET['entity'])) {
+            $this->showError('Entity is not set');
+            die;
+        }
+
+        return true;
     }
 
     public function generateContent(): void
     {
-        switch($this->entityKey) {
+        switch ($this->entityKey) {
             case 'cats':
                 $this->showCat();
                 break;
@@ -31,14 +54,14 @@ class ContentGenerator
         }
     }
 
-    public function showCat(): void
+    protected function showCat(): void
     {
         try {
             if (isset($_GET['categoryId'])) {
                 $categoryId = $_GET['categoryId'];
 
                 if (!is_numeric($categoryId)) {
-                    throw new Exception("Parameter \"categoryId\"={$_GET['categoryId']} is not a numeric");
+                    throw new Exception("Parameter \"categoryId\"={$categoryId} is not a numeric");
                 }
 
                 $cat = new RandomCat($categoryId);
@@ -65,7 +88,7 @@ class ContentGenerator
         }
     }
 
-    public function showDog(): void
+    protected function showDog(): void
     {
         // TODO: Implement work with Dogs
         $header = 'WORK STILL IN PROGRESS';
@@ -85,7 +108,7 @@ class ContentGenerator
         }
     }
 
-    public function showError(string $message): void
+    protected function showError(string $message): void
     {
         echo $this->htmlTemplate->getErrorTemplate($message);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Cat;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;

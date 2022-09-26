@@ -7,12 +7,7 @@
 <html lang="en">
     <body>
         <?php
-            if (!isset($_GET['entity'])) {
-                echo('Entity undefined. Please, choose cats or dogs');
-                die;
-            }
-
-            $contentGenerator = new ContentGenerator($_GET['entity']);
+            $contentGenerator = new ContentGenerator();
             $contentGenerator->generateContent();
         ?>
     </body>

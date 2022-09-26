@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Cat;
 
+use App\Animal;
 use GuzzleClient\GuzzleClient;
 
 abstract class Cat extends Animal
